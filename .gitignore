@@ -1,0 +1,10 @@
+.idea
+.phpunit.result.cache
+composer.lock
+coverage
+docs
+testbench.yaml
+vendor
+node_modules
+infection.log
+build
