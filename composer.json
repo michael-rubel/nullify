@@ -22,8 +22,8 @@
         "phpunit/phpunit": "^9.5",
         "phpstan/phpstan": "^1.9.2",
         "illuminate/support": "^9.0",
-        "symfony/var-dumper": "^6.1",
-        "roave/backward-compatibility-check": "^8.0",
+        "symfony/var-dumper": "^5.4|^6.1",
+        "roave/backward-compatibility-check": "^7.0|^8.0",
         "roave/infection-static-analysis-plugin": "^1.25"
     },
     "autoload": {
