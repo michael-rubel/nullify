@@ -23,6 +23,7 @@ class Nullify
      * Perform the "Nullification". 😁
      *
      * @param  mixed  $values
+     *
      * @return mixed
      */
     public static function the(mixed $values): mixed
@@ -34,6 +35,7 @@ class Nullify
      * "Nullify" the value or iterable.
      *
      * @param  mixed  $value
+     *
      * @return mixed
      */
     protected static function nullify(mixed $value): mixed
@@ -46,7 +48,7 @@ class Nullify
             return $value;
         }
 
-        $output = ! is_object($value) ? $value : clone $value;
+        $output = static::clone($value);
 
         foreach ($value as $key => $nested) {
             $output[$key] = static::nullify($nested);
@@ -81,5 +83,17 @@ class Nullify
         }
 
         return empty($value);
+    }
+
+    /**
+     * Clone the object or return the given value.
+     *
+     * @param  mixed  $value
+     *
+     * @return mixed
+     */
+    protected static function clone(mixed $value): mixed
+    {
+        return is_object($value) ? clone $value : $value;
     }
 }

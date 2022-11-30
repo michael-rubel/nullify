@@ -21,5 +21,6 @@ class NewNullify extends Nullify
     {
         static::nullify('');
         static::blank('');
+        static::clone('');
     }
 }

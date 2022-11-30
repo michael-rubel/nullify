@@ -8,5 +8,6 @@ parameters:
     reportUnmatchedIgnoredErrors: false
 
     ignoreErrors:
-        - '#Argument of an invalid type array\|ArrayAccess\|\(iterable&object\) supplied for foreach, only iterables are supported\.#'
+        - '#Argument of an invalid type ArrayAccess\|iterable supplied for foreach, only iterables are supported\.#'
         - '#Cannot access offset mixed on array\|ArrayAccess\|\(iterable&object\)\.#'
+        - '#Cannot access offset mixed on mixed\.#'
