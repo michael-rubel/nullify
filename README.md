@@ -1,3 +1,5 @@
+![Convert empty data of any type to null](https://user-images.githubusercontent.com/37669560/204819769-a4cf19ef-dec2-438a-aed7-b485206cb8e6.png)
+
 # Nullify
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/nullify.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/nullify)
 [![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/nullify.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/nullify)
@@ -9,6 +11,12 @@
 A plain PHP class to convert empty data of any type to `null`.
 
 PHP `^8.0` is required to use this class.
+
+## Installation
+
+```bash
+composer require michael-rubel/nullify
+```
 
 ## Usage
 
