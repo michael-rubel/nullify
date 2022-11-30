@@ -28,8 +28,6 @@ Nullify::the($value);
 
 ## Examples
 ```php
-🧱 Check primitive types:
-
 $value = null;
 Nullify::the($value); // null
 
