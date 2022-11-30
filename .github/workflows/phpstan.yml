@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  larastan:
+  phpstan:
     name: "Running Larastan check"
     runs-on: ubuntu-latest
     steps:
