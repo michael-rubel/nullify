@@ -42,9 +42,12 @@ Nullify::the($value); // null
 
 $value = new \stdClass;
 Nullify::the($value); // null
+```
 
-⚡ Check also nested data:
+---
 
+⚡ Checks also nested data:
+```php
 $values = new Collection([
     'valid'        => true,
     'empty_array'  => [],
