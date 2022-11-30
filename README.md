@@ -26,6 +26,8 @@ use MichaelRubel\Nullify\Nullify;
 Nullify::the($value);
 ```
 
+- **Note:** the class checks also nested [iterables](https://www.php.net/manual/en/function.is-iterable.php) and [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) objects.
+
 ## Examples
 ```php
 $value = null;
@@ -46,7 +48,8 @@ Nullify::the($value); // null
 
 ---
 
-⚡ Checks also nested data:
+⚡ Check nested elements:
+
 ```php
 $values = new Collection([
     'valid'        => true,
@@ -75,9 +78,9 @@ Nullify::the($values);
 // }
 ```
 
-- **Note:** the class checks also nested [iterables](https://www.php.net/manual/en/function.is-iterable.php) and [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) objects.
+---
 
-If you use [Laravel Collections](https://laravel.com/docs/master/collections), you can make a macro:
+📚 If you use [Laravel Collections](https://laravel.com/docs/master/collections), you can make a macro:
 
 ```php
 Collection::macro('nullify', function () {
