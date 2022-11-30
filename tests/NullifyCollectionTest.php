@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\Nullify\Tests;
 
 use Illuminate\Support\Collection;
+use MichaelRubel\Nullify\Nullify;
 use PHPUnit\Framework\TestCase;
 
 class NullifyCollectionTest extends TestCase
@@ -14,7 +15,7 @@ class NullifyCollectionTest extends TestCase
         parent::setUp();
 
         Collection::macro('nullify', function () {
-            return nullify($this);
+            return Nullify::the(values: $this);
         });
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\Nullify\Tests;
 
 use ArrayAccess;
+use MichaelRubel\Nullify\Nullify;
 use PHPUnit\Framework\TestCase;
 
 class NullifyArrayAccessTest extends TestCase
@@ -15,7 +16,7 @@ class NullifyArrayAccessTest extends TestCase
         $value['test'] = '';
         $result = new ArrayAccessObject;
         $result['test'] = null;
-        $this->assertSame($result['test'], nullify($value)['test']);
+        $this->assertSame($result['test'], Nullify::the($value)['test']);
     }
 
     public function testCanNullifyValuesInNestedArrayAccess()
@@ -32,7 +33,7 @@ class NullifyArrayAccessTest extends TestCase
         $result['obj'] = $nested;
         $this->assertSame(null, $result['obj']['test']);
 
-        $this->assertEquals($result, nullify($value));
+        $this->assertEquals($result, Nullify::the($value));
     }
 
     public function testCanObjectIsImmutableAfterUsingNullify()
@@ -43,7 +44,7 @@ class NullifyArrayAccessTest extends TestCase
         $value['obj'] = $nested;
         $this->assertSame('', $value['obj']['test']);
 
-        nullify($value);
+        Nullify::the($value);
 
         $this->assertSame('', $value['obj']['test']);
     }

@@ -2,6 +2,7 @@
 
 namespace MichaelRubel\Nullify\Tests;
 
+use MichaelRubel\Nullify\Nullify;
 use PHPUnit\Framework\TestCase;
 
 class NullifyTest extends TestCase
@@ -9,43 +10,43 @@ class NullifyTest extends TestCase
     public function testCanPassNull()
     {
         $value = null;
-        $this->assertNull(nullify($value));
+        $this->assertNull(Nullify::the($value));
     }
 
     public function testCanPassInt()
     {
         $value = 0;
-        $this->assertSame(0, nullify($value));
+        $this->assertSame(0, Nullify::the($value));
     }
 
     public function testCanPassString()
     {
         $value = '';
-        $this->assertNull(nullify($value));
+        $this->assertNull(Nullify::the($value));
 
         $value = 'test';
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testCanPassEmptyArray()
     {
         $value = [];
-        $this->assertNull(nullify($value));
+        $this->assertNull(Nullify::the($value));
 
         $value = ['test'];
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testCanPassObject()
     {
         $value = (object) ['test'];
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testCanPassEmptyObject()
     {
         $value = (object) [];
-        $this->assertNull(nullify($value));
+        $this->assertNull(Nullify::the($value));
     }
 
     public function testNullifiesNestedArrays()
@@ -62,7 +63,7 @@ class NullifyTest extends TestCase
                 'one_and_half' => null,
                 'two' => ['three' => ['four' => null]]
             ]
-        ], nullify($value));
+        ], Nullify::the($value));
     }
 
     public function testLeavesNullAsNullInArray()
@@ -71,7 +72,7 @@ class NullifyTest extends TestCase
             'test' => null,
         ];
 
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testLeavesIntAsIntInArray()
@@ -80,7 +81,7 @@ class NullifyTest extends TestCase
             'test' => 0,
         ];
 
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testLeavesStringAsStringInArray()
@@ -89,7 +90,7 @@ class NullifyTest extends TestCase
             'test' => 'test',
         ];
 
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 
     public function testLeavesObjectAsObjectInArray()
@@ -98,6 +99,6 @@ class NullifyTest extends TestCase
             'test' => (object) ['test'],
         ];
 
-        $this->assertSame($value, nullify($value));
+        $this->assertSame($value, Nullify::the($value));
     }
 }

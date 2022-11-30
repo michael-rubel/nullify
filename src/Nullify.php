@@ -20,14 +20,14 @@ namespace MichaelRubel\Nullify;
 class Nullify
 {
     /**
-     * Invoke the class.
+     * Perform the "Nullification". 😁
      *
      * @param  mixed  $values
      * @return mixed
      */
-    public function __invoke(mixed $values): mixed
+    public static function the(mixed $values): mixed
     {
-        return $this->nullify($values);
+        return static::nullify($values);
     }
 
     /**
@@ -36,9 +36,9 @@ class Nullify
      * @param  mixed  $value
      * @return mixed
      */
-    protected function nullify(mixed $value): mixed
+    protected static function nullify(mixed $value): mixed
     {
-        if ($this->blank($value)) {
+        if (static::blank($value)) {
             return null;
         }
 
@@ -49,7 +49,7 @@ class Nullify
         $output = is_object($value) ? clone $value : [];
 
         foreach ($value as $key => $nested) {
-            $output[$key] = $this->nullify($nested);
+            $output[$key] = static::nullify($nested);
         }
 
         return $output;
@@ -62,7 +62,7 @@ class Nullify
      *
      * @return bool
      */
-    protected function blank(mixed $value): bool
+    protected static function blank(mixed $value): bool
     {
         if (is_string($value)) {
             return trim($value) === '';
