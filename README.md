@@ -26,6 +26,68 @@ use MichaelRubel\Nullify\Nullify;
 Nullify::the($value);
 ```
 
+## Examples
+```php
+🧱 Check primitive types:
+
+$value = null;
+Nullify::the($value); // null
+
+$value = '';
+Nullify::the($value); // null
+
+$value = [];
+Nullify::the($value); // null
+
+$value = (object) [];
+Nullify::the($value); // null
+
+$value = new \stdClass;
+Nullify::the($value); // null
+
+⚡ Check also nested data:
+
+$values = new Collection([
+    'valid'        => true,
+    'empty_array'  => [],
+    'empty_string' => '',
+    'collection'   => new Collection([
+        'invalid' => new \stdClass,
+    ])
+]);
+
+Nullify::the($values);
+
+// Illuminate\Support\Collection^ {#459
+//   #items: array:4 [
+//     "valid" => true
+//     "empty_array" => null
+//     "empty_string" => null
+//     "collection" => Illuminate\Support\Collection^ {#461
+//       #items: array:1 [
+//         "invalid" => null
+//       ]
+//       #escapeWhenCastingToString: false
+//     }
+//   ]
+//   #escapeWhenCastingToString: false
+// }
+```
+
+- **Note:** the class checks also nested [iterables](https://www.php.net/manual/en/function.is-iterable.php) and [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) objects.
+
+If you use [Laravel Collections](https://laravel.com/docs/master/collections), you can make a macro:
+
+```php
+Collection::macro('nullify', function () {
+    return $this->map(fn ($value) => Nullify::the($value));
+});
+
+collect(['', [], (object) [], new \stdClass, '✔'])
+    ->nullify()
+    ->toArray(); // [0 => null, 1 => null, 2 => null, 3 => null, 4 => '✔']
+```
+
 ## Testing
 ```bash
 composer test
