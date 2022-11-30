@@ -36,7 +36,7 @@ class NullifyArrayAccessTest extends TestCase
         $this->assertEquals($result, Nullify::the($value));
     }
 
-    public function testCanObjectIsImmutableAfterUsingNullify()
+    public function testObjectIsImmutableAfterUsingNullify()
     {
         $value = new ArrayAccessObject;
         $nested = new ArrayAccessObject;
@@ -44,8 +44,23 @@ class NullifyArrayAccessTest extends TestCase
         $value['obj'] = $nested;
         $this->assertSame('', $value['obj']['test']);
 
-        Nullify::the($value);
+        $nullified = Nullify::the($value);
+        $this->assertEquals($nested,  $nullified['obj']);
+        $this->assertSame(null, $nullified['obj']['test']);
+        $this->assertSame('', $value['obj']['test']);
+    }
 
+    public function testArrayIsImmutableAfterUsingNullify()
+    {
+        $value = [];
+        $nested = [];
+        $nested['test'] = '';
+        $value['obj'] = $nested;
+        $this->assertSame('', $value['obj']['test']);
+
+        $nullified = Nullify::the($value);
+        $this->assertEquals($nested,  $nullified['obj']);
+        $this->assertSame(null, $nullified['obj']['test']);
         $this->assertSame('', $value['obj']['test']);
     }
 }

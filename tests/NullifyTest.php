@@ -47,6 +47,9 @@ class NullifyTest extends TestCase
     {
         $value = (object) [];
         $this->assertNull(Nullify::the($value));
+
+        $value = new \stdClass;
+        $this->assertNull(Nullify::the($value));
     }
 
     public function testNullifiesNestedArrays()

@@ -38,7 +38,7 @@ class Nullify
      */
     protected static function nullify(mixed $value): mixed
     {
-        if (static::blank($value)) {
+        if (is_null($value) || static::blank($value)) {
             return null;
         }
 
@@ -46,7 +46,7 @@ class Nullify
             return $value;
         }
 
-        $output = is_object($value) ? clone $value : [];
+        $output = ! is_object($value) ? $value : clone $value;
 
         foreach ($value as $key => $nested) {
             $output[$key] = static::nullify($nested);
@@ -77,7 +77,7 @@ class Nullify
         }
 
         if (is_object($value)) {
-            return (object) [] == $value;
+            return empty((array) $value);
         }
 
         return empty($value);
