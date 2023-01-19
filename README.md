@@ -5,8 +5,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/nullify.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/nullify)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/michael-rubel/nullify.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/nullify/?branch=main)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/nullify.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/nullify/?branch=main)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/nullify/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/nullify/actions)
-[![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/nullify/phpstan/main?style=flat-square&label=phpstan&logo=php)](https://github.com/michael-rubel/nullify/actions)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/michael-rubel/nullify/run-tests.yml?branch=main&style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/nullify/actions)
+[![PHPStan](https://img.shields.io/github/actions/workflow/status/michael-rubel/nullify/phpstan.yml?branch=main&style=flat-square&label=phpstan&logo=php)](https://github.com/michael-rubel/nullify/actions)
 
 A plain PHP class to convert empty data of any type to `null`.
 
