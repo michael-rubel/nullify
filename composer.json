@@ -23,7 +23,7 @@
         "infection/infection": "^0.26",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.5|^10.5",
-        "roave/backward-compatibility-check": "^8.6",
+        "roave/backward-compatibility-check": "^7.0|^8.0",
         "symfony/var-dumper": "^5.4|^6.1"
     },
     "autoload": {
