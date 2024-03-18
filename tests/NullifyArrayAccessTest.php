@@ -67,22 +67,25 @@ class NullifyArrayAccessTest extends TestCase
 
 class ArrayAccessObject implements ArrayAccess
 {
-    public function offsetExists(mixed $offset)
+    public object $obj;
+    public ?string $test;
+
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->{$offset});
     }
 
-    public function offsetGet(mixed $offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->{$offset};
     }
 
-    public function offsetSet(mixed $offset, mixed $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->{$offset} = $value;
     }
 
-    public function offsetUnset(mixed $offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->{$offset});
     }
