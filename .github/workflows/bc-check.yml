@@ -22,5 +22,7 @@ jobs:
           php-version: "8.3"
       - name: "Install dependencies"
         run: "composer install"
+      - name: "Install BC check"
+        run: "composer require --dev roave/backward-compatibility-check"
       - name: "Check for BC breaks"
         run: "vendor/bin/roave-backward-compatibility-check"
